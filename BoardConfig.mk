@@ -7,6 +7,7 @@
 
 DEVICE_PATH := device/tecno/KE6
 
+
 # For building with minimal manifest
 ALLOW_MISSING_DEPENDENCIES := true
 
