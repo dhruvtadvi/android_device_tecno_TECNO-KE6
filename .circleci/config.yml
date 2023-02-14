@@ -14,7 +14,6 @@ jobs:
       - run:
           name: "TWRP Builder"
           command: |
-            yes | sudo pacman -S python
             curl https://storage.googleapis.com/git-repo-downloads/repo > ./repo
             chmod a+x ./repo
             git config --global user.email "${GIT_EMAIL}"
