@@ -16,7 +16,7 @@ jobs:
           command: |
             apt update -y && apt upgrade -y
             cd ~
-            apt install git rsync aria2 sudo curl wget -y
+            apt install git rsync aria2 sudo curl wget openjdk-8-jdk -y
             git clone https://github.com/akhilnarang/scripts.git ~/scripts
             cd ~/scripts
             bash setup/android_build_env.sh
