@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   build:
    docker:
-      - image: ghcr.io/sushrut1101/docker:arch
+      - image: ubuntu:18.04
    environment:
       GIT_EMAIL: 'dhruvtadvi777@gmail.com'
       GIT_NAME: 'dhruv'
