@@ -45,5 +45,3 @@ workflows:
     jobs:
       - build:
           context: org-global
-        
-       
