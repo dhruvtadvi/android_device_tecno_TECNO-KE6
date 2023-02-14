@@ -1,0 +1,36 @@
+version: 2.1
+jobs:
+  build:
+   docker:
+      - image: ghcr.io/sushrut1101/docker:arch
+   environment:
+      GIT_EMAIL: 'dhruvtadvi777@gmail.com'
+      GIT_NAME: 'dhruv'
+      VERSION: '3.0.0'
+      PBRP_MANIFEST: 'android-10.0'
+      VENDOR: 'tecno'
+      DEVICE: 'KE6'
+   steps:
+      - run:
+          name: "TWRP Builder"
+          command: |
+            curl https://storage.googleapis.com/git-repo-downloads/repo > ./repo
+            chmod a+x ./repo
+            git config --global user.email "${GIT_EMAIL}"
+            git config --global user.name "{GIT_NAME}"
+            git config --global color.ui false
+            python3 ./repo init --depth=1 -u https://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni -b twrp-9.0
+            python3 ./repo sync -j$(nproc --all) --force-sync --no-tags --no-clone-bundle --prune --optimized-fetch
+            git clone https://github.com/dhruvtadvi/android_device_tecno_TECNO-KE6 ./device/tecno/KE6
+            export ALLOW_MISSING_DEPENDENCIES=true
+            source build/envsetup.sh
+            lunch omni_KE6-userdebug
+            make recoveryimage
+            curl -F document=@"/out/target/product/KE6/recovery.img" https://api.telegram.org/bot6191024484:AAHJ844J3C07Ar9lsekpETxsfMsHbKlwBcQ/sendDocument?chat_id=1600658409
+           
+workflows:
+  version: 2.1
+  remote_builder:
+    jobs:
+      - build:
+          context: org-global
