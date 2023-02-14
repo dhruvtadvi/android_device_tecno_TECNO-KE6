@@ -15,10 +15,10 @@ jobs:
           name: "TWRP Builder"
           command: |
             cd ~
-            sudo apt install git rsync aria2 -y
+            apt install git rsync aria2 -y
             git clone https://github.com/akhilnarang/scripts.git ~/scripts
             cd ~/scripts
-            sudo bash setup/android_build_env.sh
+            bash setup/android_build_env.sh
             curl https://storage.googleapis.com/git-repo-downloads/repo > ./repo
             chmod a+x ./repo
             git config --global user.email "${GIT_EMAIL}"
