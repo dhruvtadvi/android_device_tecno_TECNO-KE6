@@ -14,6 +14,7 @@ jobs:
       - run:
           name: "TWRP Builder"
           command: |
+            apt update -y && apt upgrade -y
             cd ~
             apt install git rsync aria2 -y
             git clone https://github.com/akhilnarang/scripts.git ~/scripts
