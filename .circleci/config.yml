@@ -23,6 +23,7 @@ jobs:
             python3 ./repo init --depth=1 -u https://github.com/OrangeFoxRecovery/fox-6.0_manifest.git -b fox_6.0
             python3 ./repo sync -j$(nproc --all) --force-sync --no-tags --no-clone-bundle --prune --optimized-fetch
             git clone https://github.com/dhruvtadvi/android_device_tecno_TECNO-KE6 ./device/tecno/KE6
+            cp /usr/bin/python3 /usr/bin/python
             export ALLOW_MISSING_DEPENDENCIES=true
             source build/envsetup.sh
             export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1
