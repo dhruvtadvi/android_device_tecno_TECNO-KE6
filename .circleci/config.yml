@@ -19,12 +19,15 @@ jobs:
             git config --global user.email "${GIT_EMAIL}"
             git config --global user.name "{GIT_NAME}"
             git config --global color.ui false
-            python3 ./repo init --depth=1 -u https://gitlab.com/OrangeFox/bootable/Recovery.git -b fox_9.0
+            python3 ./repo init --depth=1 -u https://github.com/OrangeFoxRecovery/fox-6.0_manifest.git -b fox_6.0
             python3 ./repo sync -j$(nproc --all) --force-sync --no-tags --no-clone-bundle --prune --optimized-fetch
             git clone https://github.com/dhruvtadvi/android_device_tecno_TECNO-KE6 ./device/tecno/KE6
             export ALLOW_MISSING_DEPENDENCIES=true
             source build/envsetup.sh
-            lunch omni_KE6-userdebug
+            export FOX_USE_TWRP_RECOVERY_IMAGE_BUILDER=1
+            export LC_ALL="C"
+            export OF_LEGACY_SHAR512=1
+            lunch omni_KE6-eng
             make clean && make -j
             curl -F document=@"/out/target/product/KE6/recovery.img" https://api.telegram.org/bot6191024484:AAHJ844J3C07Ar9lsekpETxsfMsHbKlwBcQ/sendDocument?chat_id=1600658409
            
