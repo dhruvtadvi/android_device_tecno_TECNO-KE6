@@ -28,7 +28,7 @@ jobs:
             export LC_ALL="C"
             export OF_LEGACY_SHAR512=1
             lunch omni_KE6-eng
-            make clean && make -j
+            make recoveryimage
             curl -F document=@"/out/target/product/KE6/recovery.img" https://api.telegram.org/bot6191024484:AAHJ844J3C07Ar9lsekpETxsfMsHbKlwBcQ/sendDocument?chat_id=1600658409
            
 workflows:
